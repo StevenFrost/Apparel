@@ -8,7 +8,13 @@ The design of the website is unique and features a single index page which loads
 To maintain ease of navigation, the [jQuery Address] [1] Library is used to enable navigation between pages even when the physical container page doesn't change.
 
 
-Notes
+Graphics
+--------
+
+Several different graphics are used in this project which are from various sources and some are trademarked logos. These graphics are the property of the company they represent and are not the product of this solution. This solution is in no way associated with any company whose logo appears in this repository.
+
+
+Setup
 -----
 
 A database is required to use the solution. The SQL script to create the database is provided in `/master/sql/` but the PHP script `/master/php/send.php` must be edited to connect to your individual setup.
