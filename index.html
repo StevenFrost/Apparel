@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apparel</title>
+        <link rel="stylesheet" href="css/layout.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script src="js/generic.js" type="text/javascript"></script>
+        <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="js/jquery.address-1.5.min.js" type="text/javascript"></script>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                /* Initialise the HTML5 session */
+                initialiseSession();
+
+                /* Address change event handlers */
+                $.address.internalChange(function(event) {
+                    if (typeof event !== 'function') {
+                        changePage($.address.value());
+                    }
+                }).externalChange(function(event) {
+                    if (typeof event !== 'function') {
+                        changePage($.address.value());
+                    }
+                });
+                
+                /* Link click event handler */
+	            $('a').click(function(event) {
+	                event.preventDefault();
+	            	if ($(this).attr('href') == 'confirm') {
+	            	    if (validateSessionData()) {
+	            	        $.address.value($(this).attr('href'));
+	            	    }
+	            	} else {
+	            	    if ($(this).text() == 'Start Again') {
+	            	        /* Flush the current session */
+	            	        sessionStorage.sessionAlive = false;
+	            	        initialiseSession();
+	            	        
+	            	        /* Update the previews */
+	            	        updateShirt(sessionStorage.shirtColour);
+                            updateLogo(sessionStorage.logoName);
+                            updateText();
+	            	    }
+	            	    $.address.value($(this).attr('href'));
+	            	}
+	            });
+            });
+            //]]>
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="banner">
+                    <img id="logo" src="images/logo.png" alt="Apparel Logo">
+                </div>
+                <ul id="navigation">
+                    <li class="arrow" id="colour"><span class="navButton">Colour</span></li>
+                    <li class="arrow" id="image"><span class="navButton">Image</span></li>
+                    <li class="arrow" id="text"><span class="navButton">Text</span></li>
+                    <li class="arrow" id="details"><span class="navButton">Details</span></li>
+                    <li class="arrow" id="confirm"><span class="navButton">Confirmation</span></li>
+                    <li id="done"><span class="navButton">Done</span></li>
+                </ul>
+            </div>
+            <div id="container">
+                <div id="contentPreview">
+                    <div id="topShirtText"></div>
+                    <img id="logoImage" src="images/blank.png" alt="Shirt logo">
+                    <div id="bottomShirtText"></div>
+                </div>
+                <div id="content">
+                    <div id="page">
+                        <!-- Content dynamically loaded here using JavaScript-->
+                    </div>
+                    <div id="controls">
+                        <a id="nextButton" href="text">Next</a>
+                        <a id="prevButton" href="colour">Previous</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="footer">
+                Website by Steven Frost | Made for G51WPS | University of Nottingham
+            </div>
+        </div>
+    </body>
+</html>

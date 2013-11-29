@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                configureButton('#prevButton', 'Previous', 'image', true);
+                configureButton('#nextButton', 'Next', 'details', true);
+                
+                /* Clone the form and update the text */
+                $('#topText .webForm').clone().appendTo('#bottomText');
+                updateText();
+                
+                /* Prevent the user from submitting forms via the return key */
+	            $("form :input").on("keydown", function(e) {
+                    return e.keyCode != 13;
+                });
+                
+                /* Field Callback functions */
+                function textChangedCallback(target, isTop) {
+                    var elem = isTop ? '#topShirtText' : '#bottomShirtText';
+                    limitTextBoxCharacters(target, 27);
+                    $(elem).text($(target).val());
+                    setTextAttributes(isTop, $(target).val(), "", "", "");
+                }
+                
+                function textColourCallback(target, isTop) {
+                    $(isTop ? '#topShirtText' : '#bottomShirtText').css('color', $(target).val());
+                    setTextAttributes(isTop, "", $(target).val(), "", "");
+                }
+                
+                function textSizeCallback(target, isTop) {
+                    var elem = isTop ? '#topShirtText' : '#bottomShirtText';
+                    switch ($(target).val()) {
+                    case 'Small':
+                        $(elem).css('font-size', '10pt'); break;
+                    case 'Medium':
+                        $(elem).css('font-size', '12pt'); break;
+                    case 'Large':
+                        $(elem).css('font-size', '14pt'); break;
+                    }
+                    setTextAttributes(isTop, "", "", $(target).val(), "");
+                }
+                
+                function textFontCallback(target, isTop) {
+                    $(isTop ? '#topShirtText' : '#bottomShirtText').css('font-family', $(target).val());
+                    setTextAttributes(isTop, "", "", "", $(target).val());
+                }
+                
+                /* Text change event handlers */
+                $('#topText input[name="shirtText"]').on("keyup", function() { textChangedCallback(this, true); });
+                $('#bottomText input[name="shirtText"]').on("keyup", function() { textChangedCallback(this, false); });
+                
+                /* Text colour change event handlers */
+                $('#topText select[name="shirtTextColour"]').change(function() { textColourCallback(this, true); });
+                $('#bottomText select[name="shirtTextColour"]').change(function() { textColourCallback(this, false); });
+                
+                /* Text size change event handlers */
+                $('#topText select[name="shirtTextSize"]').change(function() { textSizeCallback(this, true); });
+                $('#bottomText select[name="shirtTextSize"]').change(function() { textSizeCallback(this, false); });
+                
+                /* Text font change event handlers */
+                $('#topText select[name="shirtTextFont"]').change(function() { textFontCallback(this, true); });
+                $('#bottomText select[name="shirtTextFont"]').change(function() { textFontCallback(this, false); });
+            });
+            //]]>
+        </script>
+        <h1>Add some text</h1>
+        <div id="topText">
+            <h2>Top Text</h2>
+            <form class="webForm">
+                <div class="field">
+                    <label>Text:</label>
+                    <input type="text" name="shirtText"></input>
+                </div>
+                <div class="field">
+                    <label>Colour:</label>
+                    <select name="shirtTextColour" value="black">
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Pink">Pink</option>
+                        <option value="Purple">Purple</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Size:</label>
+                    <select name="shirtTextSize" value="Medium">
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Font:</label>
+                    <select name="shirtTextFont" value="Arial">
+                        <option value="Arial">Arial</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div id="bottomText">
+            <h2>Bottom Text</h2>
+            <!-- Top text form is cloned and appended to the bottomText div -->
+        </div>
+    </body>
+</html>

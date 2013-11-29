@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                configureButton('#prevButton', '', '', false);
+                configureButton('#nextButton', 'Next', 'image', true);
+                
+                /* Event handlers */
+                $('.shirtOption').click(function() {
+                    updateShirt($(this).data('shirt-colour'));
+                });
+            });
+            //]]>
+        </script>
+
+        <h1>Select a colour</h1>
+        <div class="shirtOption blue" data-shirt-colour="Blue"></div>
+        <div class="shirtOption green" data-shirt-colour="Green"></div>
+        <div class="shirtOption orange" data-shirt-colour="Orange"></div>
+        <div class="shirtOption pink" data-shirt-colour="Pink"></div>
+        <div class="shirtOption purple" data-shirt-colour="Purple"></div>
+        <div class="shirtOption red" data-shirt-colour="Red"></div>
+        <div class="shirtOption yellow" data-shirt-colour="Yellow"></div>
+        <div class="shirtOption grey" data-shirt-colour="Grey"></div>
+        <div class="shirtOption white" data-shirt-colour="White"></div>
+        <div class="clear"></div>
+    </body>
+</html>

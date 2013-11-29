@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            redirectOnUndefinedSessionData();
+            
+            $(document).ready(function() {
+                configureButton('#prevButton', '', '', false);
+                configureButton('#nextButton', '', '', false);
+                
+                /* Display a loading image */
+                $('#phpResult').html('<img src="images/loading.gif" alt="loading" style="margin-top: 150px; margin-left: 150px;"></img>');
+                
+                /* Post session data to the server for validation and storage */
+                $.post('php/send.php', {
+                    shirtColour: sessionStorage.shirtColour,
+                    logoName: sessionStorage.logoName,
+                    logoSize: sessionStorage.logoSize,
+                    hAlign: sessionStorage.horizontalAlign,
+                    topText: sessionStorage.topText,
+                    topAttributes: sessionStorage.topAttributes,
+                    bottomText: sessionStorage.bottomText,
+                    bottomAttributes: sessionStorage.bottomAttributes,
+                    qtySmall: sessionStorage.qtySmall,
+                    qtyMedium: sessionStorage.qtyMedium,
+                    qtyLarge: sessionStorage.qtyLarge,
+                    qtyXLarge: sessionStorage.qtyXLarge,
+                    title: sessionStorage.title,
+                    forename: sessionStorage.forename,
+                    surname: sessionStorage.surname,
+                    email: sessionStorage.email,
+                    house: sessionStorage.house,
+                    road: sessionStorage.road,
+                    street: sessionStorage.street,
+                    city: sessionStorage.city,
+                    county: sessionStorage.county,
+                    postcode: sessionStorage.postcode
+                }, function(data) {
+                    $('#phpResult').html(data);
+                    configureButton('#nextButton', 'Start Again', 'colour', true);
+                });
+            });
+            //]]>
+        </script>
+
+        <div id="phpResult">
+            <!-- Result from server will be shown here -->
+        </p>
+    </body>
+</html>

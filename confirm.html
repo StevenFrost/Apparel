@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                configureButton('#prevButton', 'Previous', 'details', true);
+                configureButton('#nextButton', 'Next', 'done', true);
+                
+                /* Redirect the page if any important data is undefined */
+                redirectOnUndefinedSessionData();
+
+                /* Shirt details */
+                $('#shirtDetails #colour').append(sessionStorage.shirtColour);
+                $('#shirtDetails #logo').append(sessionStorage.logoName);
+                $('#shirtDetails #logoSize').append(sessionStorage.logoSize);
+                $('#shirtDetails #logoPosition').append(sessionStorage.horizontalAlign);
+                $('#shirtDetails #shirtText').html((sessionStorage.horizontalAlign == "Middle") ? ("<strong>Top text: </strong>" + sessionStorage.topText + "<br><strong>Bottom text: </strong>" + sessionStorage.bottomText) : ("<strong>Text: </strong>" + sessionStorage.topText));
+                
+                /* Order details table */
+                var total = 0;
+                var sizes = ['Small', 14, 'Medium', 15, 'Large', 16, 'XLarge', 17];
+                
+                for (var i = 0; i < sizes.length; i += 2) {
+                    if (sessionStorage.getItem('qty' + sizes[i]) == 0) {
+                        $('#orderDetails #' + sizes[i]).hide();
+                    } else {
+                        var sum = (sessionStorage.getItem('qty' + sizes[i]) * (sizes[i + 1]));
+                        $('#orderDetails #' + sizes[i] + ' .qty').text(sessionStorage.getItem('qty' + sizes[i]));
+                        $('#orderDetails #' + sizes[i] + ' .sum').text('£' + sum);
+                        total += sum;
+                    }
+                }
+                
+                /* Email and total */
+                $('#orderDetails #email').append(sessionStorage.email);
+                $('#orderDetails #total').text('£' + total);
+                
+                /* Delivery information */
+                $('#deliveryAddress #recipient').text(sessionStorage.title + " " + sessionStorage.forename + " " + sessionStorage.surname);
+                $('#deliveryAddress #house').text(sessionStorage.house);
+                $('#deliveryAddress #road').html((sessionStorage.street == "") ? (sessionStorage.road) : (sessionStorage.road + "<br>" + sessionStorage.street));
+                $('#deliveryAddress #city').text(sessionStorage.city);
+                $('#deliveryAddress #county').text(sessionStorage.county);
+                $('#deliveryAddress #postcode').text(sessionStorage.postcode);
+            });
+            //]]>
+        </script>
+        
+        <h1>Order summary</h1>
+        <div id="shirtDetails">
+            <h2>Shirt details</h2>
+            <span class="field" id="colour"><strong>Colour: </strong></span>
+            <span class="field" id="logo"><strong>Logo: </strong></span>
+            <span class="field" id="logoSize"><strong>Logo size: </strong></span>
+            <span class="field" id="logoPosition"><strong>Logo position: </strong></span>
+            <span class="field" id="shirtText"></span>
+        </div>
+        <div id="orderDetails">
+            <h2>Order details</h2>
+            <span class="field" id="email"><strong>Email: </strong></span>
+            <table>
+                <tr><th>Size</th><th>Quantity</th><th>Price per item</th><th>Sum</th></tr>
+                <tr id="Small"><td>Small</td><td class="qty"></td><td>£14</td><td class="sum"></td></tr>
+                <tr id="Medium"><td>Medium</td><td class="qty"></td><td>£15</td><td class="sum"></td></tr>
+                <tr id="Large"><td>Large</td><td class="qty"></td><td>£16</td><td class="sum"></td></tr>
+                <tr id="XLarge"><td>X-Large</td><td class="qty"></td><td>£17</td><td class="sum"></td></tr>
+                <tr><td class="right" colspan="3">Total:</td><td id="total"></td></tr>
+            </table>
+        </div>
+        <div id="deliveryAddress">
+            <h2>Delivery address</h2>
+            <span class="field" id="recipient"></span>
+            <span class="field" id="house"></span>
+            <span class="field" id="road"></span>
+            <span class="field" id="city"></span>
+            <span class="field" id="county"></span>
+            <span class="field" id="postcode"></span>
+        </div>
+    </body>
+</html>

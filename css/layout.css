@@ -1,0 +1,232 @@
+/**
+ * Module:      layout.css
+ * Description: This file contains the main styles for the website
+ *              specific to layout. For in-line styles, see style.css
+ *
+ * Author:      Steven Frost
+ * Website:     Apparel
+ */
+
+#wrapper {
+    background-color: #F3F3F3;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+    box-shadow: 0 0 8px #888;
+    -moz-box-shadow: 0 0 8px #888;
+    -webkit-box-shadow: 0 0 8px #888;
+}
+
+#header {
+    height: 170px;
+    margin-bottom: 50px;
+	width: 900px;
+}
+
+#banner {
+    background: -webkit-gradient(linear, 0% 0% 0% 100%, from(#CFCFCF), to(#BDBDBD));
+    background: -webkit-linear-gradient(top, #CFCFCF, #BDBDBD);
+    background: moz-linear-gradient(top, #CFCFCF, #BDBDBD);
+    background: -ms-linear-gradient(top, #CFCFCF, #BDBDBD);
+    background: -o-linear-gradient(top, #CFCFCF, #BDBDBD);
+	background-color: #CFCFCF;
+	height: 130px;
+	width: 900px;
+}
+
+#banner #logo {
+    margin: 42px 40px 33px 40px;
+}
+
+#navigation {
+    background-color: #5A5A5A;
+    height: 28px;
+    list-style-type: none;
+    margin: 0px;
+    padding: 6px 0px 6px 0px;
+}
+
+#navigation li {
+    display: inline;
+    font-size: 18pt;
+    padding-left: 22px;
+    width: auto;
+}
+
+#navigation .arrow:after {
+    content: url("../images/arrow.png");
+    padding-left: 22px;
+}
+
+#container {
+	height: auto;
+	width: 900px;
+}
+
+#contentPreview {
+    background-color: #AFAFAF;
+    background-image: url("../images/shirts/shirtGrey.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 15px solid #FFFFFF;
+    float: left;
+    height: 360px;
+    margin-left: 50px;
+    margin-right: 50px;
+    position: relative;
+    width: 300px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+#logoImage {
+    left: 105px;
+    position: absolute;
+    top: 100px;
+}
+
+#topShirtText {
+    height: 1.3em;
+    text-align: center;
+    text-overflow: clip;
+    top: 70px;
+    position: absolute;
+    overflow: hidden;
+    width: 300px;
+}
+
+#bottomShirtText {
+    height: 1.3em;
+    text-align: center;
+    text-overflow: clip;
+    top: 200px;
+    position: absolute;
+    overflow: hidden;
+    width: 300px;
+}
+
+.webForm {
+    padding-bottom: 20px;
+}
+
+.webForm label {
+    color: #797979;
+    display: block;
+    float: left;
+    font-size: 10pt;
+    font-weight: 600;
+    line-height: 23px;
+    margin-right: 2px;
+    padding-top: 4px;
+    width: 110px;
+}
+
+.webForm input {
+    border: 1px solid #cecece;
+    color: #949494;
+    font-size: 8pt;
+    margin: 2px;
+    padding: 6px;
+}
+
+.webForm input.error {
+    background: #f8dbdb;
+    border-color: #e77776;
+}
+
+.webForm select {
+    border: 1px solid #cecece;
+    color: #949494;
+    font-size: 8pt;
+    margin: 2px;
+    padding: 5px 6px 5px 6px;
+}
+
+.webForm .field {
+    color: #e77776;
+    font-size: 10pt;
+    height: 34px;
+}
+
+#content {
+    float: right;
+    min-height: 390px;
+    margin-right: 50px;
+    width: 420px;
+}
+
+#content #page {
+    min-height: 340px;
+    width: 420px;
+}
+
+#controls {
+    height: 44px;
+    padding: 3px;
+    width: 414px;
+}
+
+#controls a {
+    background-color: #5A5A5A;
+    border: 2px solid #A1A1A1;
+    color: #FEFEFE;
+    cursor: pointer;
+    float: right;
+    height: 24px;
+    margin: 5px;
+    padding-top: 6px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#controls a:hover {
+    background-color: #696969;
+}
+
+#controls a:active {
+    box-shadow: 0 0 5px #08CCFF;
+    -moz-box-shadow: 0 0 5px #08CCFF;
+    -webkit-box-shadow: 0 0 5px #08CCFF;
+}
+
+#controls a.disabled:active {
+    box-shadow: 0 0 5px #CC6666;
+    -moz-box-shadow: 0 0 5px #CC6666;
+    -webkit-box-shadow: 0 0 5px #CC6666;
+}
+
+#footer {
+	background-color: #5A5A5A;
+	color: #CACACA;
+	font-size: 10pt;
+	height: 18px;
+    margin-top: 50px;
+	padding-top: 2px;
+	text-align: center;
+	width: 900px;
+}
+
+.shirtOption, .logoOption {
+    background-color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    height: 52px;
+    margin: 13px;
+    padding: 1px;
+    width: 52px;
+    box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+}
+
+.shirtOption:hover, .logoOption:hover {
+    box-shadow: 0 0 5px #08CCFF;
+    -moz-box-shadow: 0 0 5px #08CCFF;
+    -webkit-box-shadow: 0 0 5px #08CCFF;
+}

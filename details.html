@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                configureButton('#prevButton', 'Previous', 'text', true);
+                configureButton('#nextButton', 'Next', 'confirm', true);
+                
+                /* Re-apply data into each form field for continutity when navigating backwards */
+                $('.webForm .field select').each(function() {
+                    $(this).attr('value', sessionStorage.getItem('qty' + $(this).attr('name')));
+                });
+                $('#personal input[type="text"]').each(function() {
+                    $(this).attr('value', sessionStorage.getItem($(this).attr('name')));
+                });
+                
+                /* Shirt size change event handler */
+                $('.webForm .field select').change(function() {
+                    sessionStorage.setItem('qty' + $(this).attr('name'), $(this).attr('value'));
+                });
+                
+                /* Quantity change event handler */
+                $('input[name="quantity"]').change(function() {
+                    sessionStorage.quantity = $(this).attr('value');
+                });
+                
+                /* Personal details text change event handler */
+                $('#personal input').change(function() {
+                    sessionStorage.setItem($(this).attr('name'), $(this).attr('value'));
+                });
+                
+                /* Form input on-blur event handler (field colouring) */
+                $('.webForm input').blur(function() {
+                    if ($(this).attr('name') != 'street') {
+                        if ($(this).val() == "") {
+                            $(this).attr('class', 'error');
+                        } else {
+                            $(this).removeAttr('class');
+                        }
+                    }
+                });
+                
+                /* Prevent the user from submitting forms via the return key */
+	            $("form :input").on("keypress", function(e) {
+                    return e.keyCode != 13;
+                });
+            });
+            //]]>
+        </script>
+
+        <h1>Enter your order details</h1>
+        <h2>Order quantities</h2>
+        <form id="orderQuantities" class="webForm">
+            <div class="field">
+                <label for="small">Small (&pound14):</label>
+                <select id="sizeQuantity" name="Small">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="medium">Medium (&pound15):</label>
+                <select id="sizeQuantity" name="Medium">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="large">Large (&pound16):</label>
+                <select id="sizeQuantity" name="Large">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="x-large">X-Large (&pound17):</label>
+                <select id="sizeQuantity" name="XLarge">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </form>
+        <h2>Personal details</h2>
+        <form class="webForm" id="personal">
+            <div class="field">
+                <label for="title">Title:</label>
+                <input type="text" name="title" size="8"></input> *
+            </div>
+            <div class="field">
+                <label for="forename">Forename:</label>
+                <input type="text" name="forename" size="15"></input> *
+            </div>
+            <div class="field">
+                <label for="surname">Surname:</label>
+                <input type="text" name="surname" size="15"></input> *
+            </div>
+            <div class="field">
+                <label for="email">E-mail:</label>
+                <input type="text" name="email" size="40"></input> *
+            </div>
+            <div class="field">
+                <label for="house">House number:</label>
+                <input type="text" name="house" size="8"></input> *
+            </div>
+            <div class="field">
+                <label for="road">Address line 1:</label>
+                <input type="text" name="road" size="40"></input> *
+            </div>
+            <div class="field">
+                <label for="street">Address line 2:</label>
+                <input type="text" name="street" size="40"></input>
+            </div>
+            <div class="field">
+                <label for="city">Town/City:</label>
+                <input type="text" name="city" size="25"></input> *
+            </div>
+            <div class="field">
+                <label for="county">County:</label>
+                <input type="text" name="county" size="25"></input> *
+            </div>
+            <div class="field">
+                <label for="postcode">Postcode:</label>
+                <input type="text" name="postcode" size="8"></input> *
+            </div>
+        </form>
+    </body>
+</html>

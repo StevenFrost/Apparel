@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            //<![CDATA[
+            $(document).ready(function() {
+                configureButton('#prevButton', 'Previous', 'colour', true);
+                configureButton('#nextButton', 'Next', 'text', true);
+                updateLogoOptions();
+                
+                /* Shirt colour option event handler */
+                $('.logoOption img').click(function() {
+                    updateLogo($(this).data('logo-name'));
+                });
+                
+                /* Radiobutton checked-changed event handler */
+                $('input:radio').change(function() {
+                    if ($(this).attr('name') == 'logoSize') {
+                        sessionStorage.logoSize = $(this).val();
+                    } else {
+                        sessionStorage.horizontalAlign = $(this).val();
+                    }
+                    
+                    /* Update the logo options, image and text */
+                    updateLogoOptions();
+                    updateLogo(sessionStorage.logoName);
+                    updateText();
+                });
+            });
+            //]]>
+        </script>
+
+        <h1>Select a logo</h1>
+        <div class="logoOption"><img src="images/logos/aperture/thumb.png" data-logo-name="aperture"></div>
+        <div class="logoOption"><img src="images/logos/acreed/thumb.png" data-logo-name="acreed"></div>
+        <div class="logoOption"><img src="images/logos/playstation/thumb.png" data-logo-name="playstation"></div>
+        <div class="logoOption"><img src="images/logos/gnu/thumb.png" data-logo-name="gnu"></div>
+        <div class="logoOption"><img src="images/logos/blank/thumb.png" data-logo-name="blank"></div>
+        <div class="clear"></div>
+        <h2>Properties</h2>
+        <p>
+            Logo size:<br>
+            <input type="radio" name="logoSize" value="Small">Small</input><br>
+            <input type="radio" name="logoSize" value="Large">Large</input>
+        </p>
+        <p id="logoAlignment">
+            Alignment:<br>
+            <input type="radio" name="hAlign" value="Left">Left</input><br>
+            <input type="radio" name="hAlign" value="Middle">Middle</input><br>
+            <input type="radio" name="hAlign" value="Right">Right</input>
+        </p>
+    </body>
+</html>

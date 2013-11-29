@@ -1,0 +1,118 @@
+/**
+ * Module:      style.css
+ * Description: This file contains the main in-line styles and
+ *              definitions for default generic elements in the
+ *              website.
+ *
+ * Author:      Steven Frost
+ * Website:     Apparel
+ */
+
+body {
+    background-color: #CAC9C2;
+    color: #8A8A8A;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    margin-top: 0px;
+}
+
+h1 {
+    color: #5A5A5A;
+    margin-top: 0px;
+}
+
+h2 {
+    color: #5A5A5A;
+}
+
+p {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+strong {
+    color: #797979;
+    font-weight: 600;
+}
+
+table {
+    border-collapse:collapse;
+    margin-top: 10px;
+    width: 100%;
+}
+
+th {
+    background-color: #CFCFCF;
+    border: 1px solid #AFAFAF;
+    border-collapse:collapse;
+    padding: 5px 8px 5px 8px;
+}
+
+td {
+    background-color: #E7E7E7;
+    border: 1px solid #AFAFAF;
+    border-collapse:collapse;
+    padding: 5px 8px 5px 8px;
+}
+
+.right {
+    background-color: transparent;
+    border: 0px solid transparent;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.navButton {
+    color: #B4B4B4;
+}
+
+.navButtonCurrent {
+    color: #FFFFFF;
+    text-shadow: 0 0 4px #EFEFEF;
+    -moz-text-shadow: 0 0 4px #EFEFEF;
+    -webkit-text-shadow: 0 0 4px #EFEFEF;
+}
+
+.shirtOption.blue {
+    background-color: #0969AB;
+}
+
+.shirtOption.green {
+    background-color: #007E00;
+}
+
+.shirtOption.orange {
+    background-color: #C13C00;
+}
+
+.shirtOption.pink {
+    background-color: #9A2659;
+}
+
+.shirtOption.purple {
+    background-color: #611F59;
+}
+
+.shirtOption.red {
+    background-color: #931E1E;
+}
+
+.shirtOption.yellow {
+    background-color: #CDD00C;
+}
+
+.shirtOption.grey {
+    background-color: #C1C1C1;
+}
+
+.shirtOption.white {
+    background-color: #FFFFFF;
+}
+
+#deliveryAddress .field,#shirtDetails .field,#orderDetails .field{
+    display: block;
+}
+
+.clear {
+    clear: both;
+}
